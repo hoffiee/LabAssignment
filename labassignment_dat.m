@@ -2,6 +2,9 @@
 % load them into matlab workspace during 
 % preload of the simulink model.
 
+% Clears anything that should not be there
+clear all, clc, clf, close all
+
 
 % Constants given in task
 J_1= 1.7*10^-3;
