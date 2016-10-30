@@ -7,17 +7,18 @@ load('exactSolution.mat')
 
 
 lambda = eig(A);
+lambda(4)=[]
 
 
 
 
 % Iterative search for step size
 h = 1;
-while ~all(abs(1+h*lambda) <= 1)
+while ~all(abs(1+h*lambda) < 1)
 	abs(1+h*lambda);
 	h=h/2;
 end
-h=1e-3;
+% h=1e-3;
 disp(['stepsize h: ' num2str(h)])
 
 

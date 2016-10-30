@@ -8,14 +8,13 @@ load('exactSolution.mat')
 
 
 lambda = eig(A);
-
+lambda(4)=[]
 
 
 
 % Iterative search for step size
 h = 1;
-while ~all(abs(1+h*lambda) <= 1)
-	abs(1+h*lambda);
+while ~all(abs(1+h*lambda+(lambda*h).^2/2) < 1)
 	h=h/2;
 end
 disp(['stepsize h: ' num2str(h)])
@@ -24,8 +23,6 @@ disp(['stepsize h: ' num2str(h)])
 % Generate input signal
 t = 0:h:10; % 10 seconds simulation
 u = sin(3*t);
-% u=ones(size(t));
-% Chosen input signal
 
 x=RungeKutta(A,B,u,[0; 0; 0; 0],h,10/h);
 

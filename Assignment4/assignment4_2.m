@@ -7,13 +7,13 @@ assignment2_1
 load('exactSolution.mat')
 
 lambda = eig(A);
-
+lambda(4)=[]
 
 
 
 % Iterative search for step size, for Euler
 h = 1;
-while ~all(abs(1+h*lambda) <= 1)
+while ~all((abs(h*lambda) < 1)) || ~all((abs(h*lambda) > 0.25))
 	abs(1+h*lambda);
 	h=h/2;
 end
